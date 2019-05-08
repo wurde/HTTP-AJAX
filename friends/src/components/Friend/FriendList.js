@@ -5,12 +5,14 @@
  */
 
 const React = require('react')
+const axios = require('axios')
 
 /**
  * Constants
  */
 
 const Component = React.Component
+const client = axios.create({ baseURL: 'http://localhost:5000' })
 
 /**
  * Define component
@@ -22,6 +24,14 @@ class FriendList extends Component {
     this.state = {
       friends: []
     }
+  }
+
+  componentDidMount() {
+    client({
+      method: 'GET',
+      url: '/friends'
+    }).then(res => this.setState({ friends: res.data }))
+      .catch(err => console.log(err))
   }
 
   render() {

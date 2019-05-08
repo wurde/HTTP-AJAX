@@ -51,9 +51,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="jsx-App">
-        <NewFriendForm addNewFriend={this.addNewFriend} />
-        <FriendList friends={this.state.friends}/>
+      <div class="row">
+        <div class="col-12">
+          <div class="container">
+            <NewFriendForm addNewFriend={this.addNewFriend} />
+            <FriendList friends={this.state.friends}/>
+          </div>
+        </div>
       </div>
     )
   }

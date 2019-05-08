@@ -73,3 +73,16 @@ p {
 [hidden] {
   display: none !important;
 }
+
+/**
+ * Add "hand" cursor to non-disabled button elements.
+ */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}

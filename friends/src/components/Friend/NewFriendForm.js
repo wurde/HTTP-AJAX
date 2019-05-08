@@ -51,23 +51,21 @@ class NewFriendForm extends Component {
         <div class="row">
           <div class="col-12 py-4">
 
-            <h3>New Friend Form</h3>
-
             <form onSubmit={this.handleOnSubmit}>
-              <div>
+              <div class="form-group">
                 <label htmlFor="input-name">Name</label>
-                <input id="input-name" type="text" name="name" value={this.state.name} onChange={this.handleOnChange} required></input>
+                <input id="input-name" type="text" name="name" value={this.state.name} onChange={this.handleOnChange} className="form-control" required></input>
               </div>
-              <div>
+              <div class="form-group">
                 <label htmlFor="input-email">Email</label>
-                <input id="input-email" type="text" name="email" value={this.state.email} onChange={this.handleOnChange} required></input>
+                <input id="input-email" type="text" name="email" value={this.state.email} onChange={this.handleOnChange} className="form-control" required></input>
               </div>
-              <div>
+              <div class="form-group">
                 <label htmlFor="input-age">Age</label>
-                <input id="input-age" type="number" name="age" value={this.state.age} onChange={this.handleOnChange}></input>
+                <input id="input-age" type="number" name="age" value={this.state.age} onChange={this.handleOnChange} className="form-control"></input>
               </div>
               <div>
-                <button type="submit">Submit</button>
+                <button type="submit" className="btn btn-primary">Submit</button>
               </div>
             </form>
 

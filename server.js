@@ -1,13 +1,37 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+'use strict'
 
-const app = express();
-let nextId = 7;
+/**
+ * Dependencies
+ */
 
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+
+/**
+ * Constants
+ */
+
+const port = process.env.PORT || 5000
+
+/**
+ * Define app
+ */
+
+const app = express()
+
+/**
+ * Define data helper functions
+ */
+
+let nextId = 7
 function getNewId() {
-  return nextId++;
+  return nextId++
 }
+
+/**
+ * Define seed data
+ */
 
 let friends = [
   {
@@ -46,40 +70,74 @@ let friends = [
     age: 47,
     email: 'luis@lambdaschool.com',
   },
-];
+]
 
-app.use(cors());
-app.use(bodyParser.json());
+/**
+ * Middleware
+ */
+
+app.use(cors())
+app.use(bodyParser.json())
+
+/**
+ * Routes
+ */
 
 app.get('/friends', (req, res) => {
-  res.status(200).json(friends);
-});
+  res.status(200).json(friends)
+})
 
 app.post('/friends', (req, res) => {
-  const friend = { id: getNewId(), ...req.body };
-  friends = [...friends, friend];
-  res.status(201).json(friends);
-});
+  const friend = { id: getNewId(), ...req.body }
+  friends = [...friends, friend]
+  res.status(201).json(friends)
+})
 
 app.put('/friends/:id', (req, res) => {
-  const { id } = req.params;
-  let friendIndex = friends.findIndex(friend => friend.id == id);
+  const { id } = req.params
+  let friendIndex = friends.findIndex(friend => friend.id == id)
 
   if (friendIndex >= 0) {
-    friends[friendIndex] = { ...friends[friendIndex], ...req.body };
-    res.status(200).json(friends);
+    friends[friendIndex] = { ...friends[friendIndex], ...req.body }
+    res.status(200).json(friends)
   } else {
     res
       .status(404)
-      .json({ message: `The friend with id ${id} does not exist.` });
+      .json({ message: `The friend with id ${id} does not exist.` })
   }
-});
+})
 
 app.delete('/friends/:id', (req, res) => {
-  friends = friends.filter(friend => friend.id != req.params.id);
-  res.status(200).json(friends);
-});
+  friends = friends.filter(friend => friend.id != req.params.id)
+  res.status(200).json(friends)
+})
 
-app.listen(5000, () => {
-  console.log('server listening on port 5000');
-});
+/**
+ * Start server
+ */
+
+async function start_server() {
+  /**
+   * Set process title.
+   */
+
+  process.title = "http-ajax"
+
+  /**
+   * Start listening for requests.
+   */
+
+  app.listen(port, () => {
+    console.log(`Express app listening on port ${port}`)
+  })
+}
+
+if (module === require.main) {
+  start_server()
+}
+
+/**
+ * Export app
+ */
+
+module.exports = app

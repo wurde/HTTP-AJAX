@@ -3,16 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "cors": "^2.8.4",
-    "express": "^4.16.2",
-    "nodemon": "^1.14.11"
-  },
-  "devDependencies": {},
   "scripts": {
     "start": "nodemon server.js"
   },
   "author": "Lambda School",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "nodemon": "^1.19.0"
+  }
 }

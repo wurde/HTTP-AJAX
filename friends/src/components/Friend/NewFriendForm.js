@@ -13,7 +13,6 @@ const styles = require('./styles/index')
  */
 
 const Component = React.Component
-const client = axios.create({ baseURL: 'http://localhost:5000' })
 
 /**
  * Define component

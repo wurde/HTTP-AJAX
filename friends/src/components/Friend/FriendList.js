@@ -6,6 +6,7 @@
 
 const React = require('react')
 const styles = require('./styles/index')
+const Friend = require('./Friend')
 
 /**
  * Define component
@@ -16,11 +17,9 @@ function FriendList(props) {
     <styles.FriendListStyle>
       <div className="row">
         <div className="col-12 py-4">
-
           <h1>Friends List</h1>
 
-          {props.friends.map((friend, i) => <p key={i}>{friend.name}, {friend.age}, {friend.email}</p>)}
-
+          {props.friends.map((friend, i) => <Friend key={i} {...friend} removeFriend={props.removeFriend} />)}
         </div>
       </div>
     </styles.FriendListStyle>

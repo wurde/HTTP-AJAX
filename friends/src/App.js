@@ -34,6 +34,7 @@ class App extends Component {
       friends: []
     }
     this.addNewFriend = this.addNewFriend.bind(this)
+    this.removeFriend = this.removeFriend.bind(this)
   }
 
   componentDidMount() {
@@ -49,7 +50,15 @@ class App extends Component {
       method: 'POST',
       url: '/friends',
       data: friend
-    }).then(res => { console.log(res.data); this.setState({ friends: res.data }) })
+    }).then(res => { this.setState({ friends: res.data }) })
+      .catch(err => console.log(err))
+  }
+
+  removeFriend(id) {
+    axios_client({
+      method: 'DELETE',
+      url: `/friends/${id}`
+    }).then(res => { this.setState({ friends: res.data }) })
       .catch(err => console.log(err))
   }
 
@@ -59,7 +68,7 @@ class App extends Component {
         <div className="col-12">
           <div className="container">
             <NewFriendForm addNewFriend={this.addNewFriend} />
-            <FriendList friends={this.state.friends}/>
+            <FriendList friends={this.state.friends} removeFriend={this.removeFriend}/>
           </div>
         </div>
       </div>

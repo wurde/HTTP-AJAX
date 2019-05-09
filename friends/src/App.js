@@ -15,7 +15,7 @@ const components = require('./components/index')
 const Component = React.Component
 const FriendList = components.FriendList
 const NewFriendForm = components.NewFriendForm
-const client = axios.create({ baseURL: 'http://localhost:5000' })
+const axios_client = axios.create({ baseURL: 'http://localhost:5000' })
 
 /**
  * Import component styles
@@ -37,7 +37,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    client({
+    axios_client({
       method: 'GET',
       url: '/friends'
     }).then(res => this.setState({ friends: res.data }))
@@ -45,15 +45,19 @@ class App extends Component {
   }
 
   addNewFriend(friend) {
-    const new_friend_list = this.state.friends.concat(friend)
-    this.setState({ friends: new_friend_list })
+    axios_client({
+      method: 'POST',
+      url: '/friends',
+      data: friend
+    }).then(res => { console.log(res.data); this.setState({ friends: res.data }) })
+      .catch(err => console.log(err))
   }
 
   render() {
     return (
-      <div class="row">
-        <div class="col-12">
-          <div class="container">
+      <div className="row">
+        <div className="col-12">
+          <div className="container">
             <NewFriendForm addNewFriend={this.addNewFriend} />
             <FriendList friends={this.state.friends}/>
           </div>

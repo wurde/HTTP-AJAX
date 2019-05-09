@@ -48,19 +48,19 @@ class NewFriendForm extends Component {
   render() {
     return (
       <styles.NewFriendFormStyle>
-        <div class="row">
-          <div class="col-12 py-4">
+        <div className="row">
+          <div className="col-12 py-4">
 
             <form onSubmit={this.handleOnSubmit}>
-              <div class="form-group">
+              <div className="form-group">
                 <label htmlFor="input-name">Name</label>
                 <input id="input-name" type="text" name="name" value={this.state.name} onChange={this.handleOnChange} className="form-control" required></input>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label htmlFor="input-email">Email</label>
                 <input id="input-email" type="text" name="email" value={this.state.email} onChange={this.handleOnChange} className="form-control" required></input>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label htmlFor="input-age">Age</label>
                 <input id="input-age" type="number" name="age" value={this.state.age} onChange={this.handleOnChange} className="form-control"></input>
               </div>

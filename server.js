@@ -109,9 +109,6 @@ app.put('/friends/:id', (req, res) => {
 
 app.delete('/friends/:id', (req, res) => {
   friends = friends.filter(friend => friend.id != req.params.id)
-  console.log(req.params.id)
-  console.log(JSON.stringify(friends, null, 2))
-  console.log('')
   res.status(200).json(friends)
 })
 

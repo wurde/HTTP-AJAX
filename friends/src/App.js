@@ -73,9 +73,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-12">
-          <div className="container">
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
             <NewFriendForm addNewFriend={this.addNewFriend} />
             <FriendList friends={this.state.friends}
                         updateFriend={this.updateFriend}

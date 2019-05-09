@@ -16,7 +16,7 @@ function FriendList(props) {
   return (
     <styles.FriendListStyle>
       <div className="row">
-        <div className="col-12 py-4">
+        <div className="col-12 py-2">
           <h1>Friends List</h1>
 
           {props.friends.map((friend, i) =>

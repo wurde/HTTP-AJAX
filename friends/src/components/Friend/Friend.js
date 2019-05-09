@@ -36,11 +36,11 @@ class Friend extends Component {
     return (
       <styles.FriendStyle>
         <p>
-          <input type="text" name="name" value={this.state.name} onChange={this.handleOnChange}></input>,
-          <input type="text" name="email" value={this.state.email} onChange={this.handleOnChange}></input>,
-          <input type="number" name="age" value={this.state.age} onChange={this.handleOnChange}></input>
-          <span onClick={() => this.props.updateFriend(this.state)}>save</span>
-          <span onClick={() => this.props.removeFriend(this.props.id)}>x</span>
+          <input type="text" name="name" value={this.state.name} onChange={this.handleOnChange} className="form-control"></input>
+          <input type="text" name="email" value={this.state.email} onChange={this.handleOnChange} className="form-control"></input>
+          <input type="number" name="age" value={this.state.age} onChange={this.handleOnChange} className="form-control mr-2"></input>
+          <span className="btn btn-primary" onClick={() => this.props.updateFriend(this.state)}>save</span>
+          <span className="btn" onClick={() => this.props.removeFriend(this.props.id)}>x</span>
         </p>
       </styles.FriendStyle>
     )

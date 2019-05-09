@@ -16,8 +16,9 @@ const styled = styled_components.default
  * Define component
  */
 
-const FriendListStyle = styled.div(`
+const FriendListStyle = styled.div(() => `
   background: #DDD;
+  padding: 10px;
 `)
 
 /**

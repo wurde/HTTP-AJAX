@@ -54,6 +54,15 @@ class App extends Component {
       .catch(err => console.log(err))
   }
 
+  updateFriend(friend) {
+    axios_client({
+      method: 'PUT',
+      url: `/friends/${friend.id}`,
+      data: friend
+    }).then(res => { this.setState({ friends: res.data }) })
+      .catch(err => console.log(err))
+  }
+
   removeFriend(id) {
     axios_client({
       method: 'DELETE',
@@ -68,7 +77,9 @@ class App extends Component {
         <div className="col-12">
           <div className="container">
             <NewFriendForm addNewFriend={this.addNewFriend} />
-            <FriendList friends={this.state.friends} removeFriend={this.removeFriend}/>
+            <FriendList friends={this.state.friends}
+                        updateFriend={this.updateFriend}
+                        removeFriend={this.removeFriend}/>
           </div>
         </div>
       </div>

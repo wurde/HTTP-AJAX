@@ -16,8 +16,9 @@ const styled = styled_components.default
  * Define component
  */
 
-const FriendStyle = styled.div(() => `
+const FriendStyle = styled.div((props) => `
   input {
+    background-color: ${props.inputBackgroundColor || 'blue'} !important;
     border-radius: 5px;
     border: 1px solid #DDD;
     padding: 5px 10px;

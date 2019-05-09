@@ -25,21 +25,22 @@ class Friend extends Component {
       name: this.props.name,
       email: this.props.email,
       age: this.props.age,
+      hasChange: false
     }
   }
 
   handleOnChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value })
+    this.setState({ [event.target.name]: event.target.value, hasChange: true })
   }
 
   render() {
     return (
-      <styles.FriendStyle>
+      <styles.FriendStyle inputBackgroundColor={(this.state.hasChange) ? "#fff3b3" : "#fff" }>
         <p>
           <input type="text" name="name" value={this.state.name} onChange={this.handleOnChange} className="form-control"></input>
           <input type="text" name="email" value={this.state.email} onChange={this.handleOnChange} className="form-control"></input>
           <input type="number" name="age" value={this.state.age} onChange={this.handleOnChange} className="form-control mr-2"></input>
-          <span className="btn btn-primary" onClick={() => this.props.updateFriend(this.state)}>save</span>
+          <span className="btn btn-primary" onClick={() => { this.props.updateFriend(this.state); this.setState({ hasChange: false }) }}>save</span>
           <span className="btn" onClick={() => this.props.removeFriend(this.props.id)}>x</span>
         </p>
       </styles.FriendStyle>

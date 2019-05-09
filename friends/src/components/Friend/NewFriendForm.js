@@ -5,7 +5,6 @@
  */
 
 const React = require('react')
-const axios = require('axios')
 const styles = require('./styles/index')
 
 /**

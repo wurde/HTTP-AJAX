@@ -41,7 +41,7 @@ class Friend extends Component {
           <input type="text" name="email" value={this.state.email} onChange={this.handleOnChange} className="form-control"></input>
           <input type="number" name="age" value={this.state.age} onChange={this.handleOnChange} className="form-control mr-2"></input>
           <span className="btn btn-primary" onClick={() => { this.props.updateFriend(this.state); this.setState({ hasChange: false }) }}>save</span>
-          <span className="btn" onClick={() => this.props.removeFriend(this.props.id)}>x</span>
+          <span className="btn" onClick={() => { console.log("this.props.id", this.props.id); console.log("this.state.id", this.state.id); this.props.removeFriend(this.state.id) }}>x</span>
         </p>
       </styles.FriendStyle>
     )

@@ -19,8 +19,8 @@ function FriendList(props) {
         <div className="col-12 py-2">
           <h1>Friends List</h1>
 
-          {props.friends.map((friend, i) =>
-            <Friend key={i} {...friend} removeFriend={props.removeFriend} updateFriend={props.updateFriend} />)}
+          {props.friends.map(friend =>
+            <Friend key={friend.id} {...friend} removeFriend={props.removeFriend} updateFriend={props.updateFriend} />)}
         </div>
       </div>
     </styles.FriendListStyle>
